@@ -1,0 +1,133 @@
+/* Général ------------------------------------------------------------------------------------- */
+
+body, p, legend, label, input {
+    font: normal 10pt verdana, helvetica, sans-serif;
+}
+
+/* Tableaux -------------------------------------------------------------------------------------*/
+.customerTable {   
+   border-collapse:collapse;
+   border:1px solid #000000;
+   padding: 10px;
+   margin: 10px;
+}
+
+.customerTableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.customerTableOddRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFF;	
+}
+
+.customerTableEvenRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+}
+
+.orderTable {   
+   border-collapse:collapse;
+   border:2px solid #0568CD;
+   padding: 10px;
+   margin: 10px;
+}
+
+.orderTableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.orderTableOddRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFF;	
+}
+
+.orderTableEvenRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #25c3fa;
+}
+
+/* Forms --------------------------------------------------------------------------------------- */
+fieldset {
+    padding: 10px;
+    border: 1px #048d97 solid;
+    margin: 10px;
+}
+
+legend {
+    font-weight: bold;
+    color: #048d97;
+}
+
+form label {
+    float: left;
+    width: 150px;
+    margin: 3px 0px 0px 0px;
+}
+
+form input {
+    margin: 3px 3px 0px 0px;
+    border: 1px #c0c0c0 solid;
+}
+
+form input.sansLabel {
+    margin-left: 200px;
+}
+
+button {
+	width:110px;
+	cursor:pointer;
+	text-transform:capitalize;
+	margin:auto;
+}
+.resetButton {
+	padding:6px 0 6px 0;
+	font:Bold 13px Arial;
+	background:#d34836;
+	color:#fff;
+	width:100px;
+	border-radius:2px;
+	border:none;
+}
+.submitButton {
+	padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#478bf9;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
+}
+
+.required {
+    color: #c00;
+}
+
+.error {
+    color: #900;
+}
+
+.success {
+    color: #090;
+}
+
+.info {
+    font-style: italic;
+    color: #F38C2B;
+}
+
+/* Menu */
+div#menu{
+	border: 1px solid #0568CD;
+	padding: 10px;
+	margin: 10px;
+}
+div#corps{
+	margin: 10px;
+}

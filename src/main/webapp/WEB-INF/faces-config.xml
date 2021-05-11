@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+	version="2.3">
+	<!--  xmlns:xsi & xsi:schemaLocation décrit la grammaire: le schéma 
+	qui va valider le document, eclipse va nous aider et va générer 
+	les balises pour nous aider à remplir ce fichier, l'assistant de frappe
+	ctrl + espace, jcp : java community process qui définit les spécifications -->
+	<application>
+		<resource-bundle>
+			<base-name>fr.m2i.crm.bean.messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+</faces-config>

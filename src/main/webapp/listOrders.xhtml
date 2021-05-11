@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Liste des commandes</title>
+	<h:outputStylesheet name="style.css" />
+</h:head>
+<h:body>
+	<ui:include src="inc/menu.xhtml" />
+	<h:dataTable value = "#{orderBean.getOrders()}" var = "order"
+	   styleClass = "orderTable"
+	   headerClass = "orderTableHeader"
+	   rowClasses = "orderTableOddRow,orderTableEvenRow">
+	   
+	   <h:column>    				
+	      <f:facet name = "header">Nom</f:facet>    				
+	      #{order.customer.lastname}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Prénom</f:facet>
+	      #{order.customer.firstname}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Label</f:facet>
+	      #{order.label}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">T.J.M. H.T.</f:facet>
+	      #{order.adrEt}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">TVA</f:facet>
+	      #{order.tva}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Nombre de jours</f:facet>
+	      #{order.numberOfDays}
+	   </h:column>
+	   
+	    <h:column>
+	      <f:facet name = "header">Type</f:facet>
+	      #{order.type}
+	   </h:column>
+	   
+	    <h:column>
+	      <f:facet name = "header">Statut</f:facet>
+	      #{order.status}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Notes</f:facet>
+	      #{order.notes}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Action</f:facet>
+	      <h:form>
+	      <h:commandLink action="#{orderBean.delete(order)}" >
+	       	<center><h:graphicImage value="resources/delete.png" /></center>
+	      </h:commandLink>
+	      </h:form>
+	   </h:column>
+	</h:dataTable>
+</h:body>
+</html>

@@ -1,0 +1,97 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    	<!-- Label component -->
+		<h:outputLabel for="lastname">Nom <span class="required">*</span></h:outputLabel>
+		<!--  EL : used to expose entity lastname attribute to the view 
+				requiredMessage : to specify error message if empty input by
+				using EL to refert bundle message 
+			 Label is used by error message -->
+		<h:inputText id="lastname" value="#{customerBean.customer.lastname}" required="true" requiredMessage="#{msg['createCustomer.lastname.required']}" size="50" maxlength="100" label="Nom" validatorMessage="#{msg['createCustomer.lastname.validator']}" >
+			<f:validateLength minimum="2" maximum="50" />
+			<!-- AJAX : Asynchronous Javascript and XML
+				A set of technologies that allow a fragment of a web page 
+				to be updated without the need to reload the entire web page 
+				To be able to validate the content of each field of our registration form 
+				without requiring a click on the submit button, 
+				nor requiring a reload of the entire page.
+				event : defines the action that triggers the sending of the AJAX
+				REQUEST to the server
+				blur : this JS property will trigger a request as soon as the current
+				field loses focus 
+				render : defines the component(s) to be renderd, once the request
+				is processed by the server -->
+			<f:ajax event="blur" render="lastnameMessage" />
+		</h:inputText>
+		<!-- To generate an error message for lastname with error css class into the view when responding -->
+		<h:message id="lastnameMessage" for="lastname" errorClass="error" />
+		<br />
+		
+		<h:outputLabel for="firstname">Prénom <span class="required">*</span></h:outputLabel>
+		<h:inputText id="firstname" value="#{customerBean.customer.firstname}" required="true" requiredMessage="#{msg['createCustomer.firstname.required']}" size="50" maxlength="100" validatorMessage="#{msg['createCustomer.firstname.validator']}" >
+			<f:ajax event="blur" render="firstnameMessage" />
+		</h:inputText>		
+		<h:message id="firstnameMessage" for="firstname" errorClass="error" />
+		<br />
+		
+		<h:outputLabel for="company">Entreprise <span class="required">*</span></h:outputLabel>
+		<h:inputText id="company" value="#{customerBean.customer.company}" required="true" requiredMessage="#{msg['createCustomer.company.required']}" size="50" maxlength="200" validatorMessage="#{msg['createCustomer.company.validator']}">
+			<f:validateLength minimum="3" maximum="50" />
+			<f:ajax event="blur" render="companyMessage" />
+		</h:inputText>
+		<h:message id="companyMessage" for="company" errorClass="error" />
+		<br />
+		
+		<h:outputLabel for="phone">Téléphone <span class="required">*</span></h:outputLabel>
+		<h:inputText id="phone" value="#{customerBean.customer.phone}" required="true" requiredMessage="#{msg['createCustomer.phone.required']}" size="20" maxlength="15" validator="#{customerBean.validatePhone}">
+			<f:ajax event="blur" render="phoneMessage" />
+		</h:inputText>		
+		<h:message id="phoneMessage" for="phone" errorClass="error" />
+		<br />
+
+		<h:outputLabel for="mobile">Mobile</h:outputLabel>
+		<h:inputText id="mobile" value="#{customerBean.customer.mobile}" size="20" maxlength="15" validator="#{customerBean.validatePhone}">
+			<f:ajax event="blur" render="mobileMessage" />
+		</h:inputText>
+		<h:message id="mobileMessage" for="mobile" errorClass="error" />
+		<br />
+		<!-- For secret password use inputSecret Component -->
+	<!-- <h:outputLabel for="motdepasse">Mot de passe <span
+			class="requis">*</span>
+	</h:outputLabel>
+	<h:inputSecret id="motdepasse"
+		value="#{inscrireBean.utilisateur.motDePasse}" required="true"
+		size="20" maxlength="20"
+		requiredMessage="#{msg['inscription.motdepasse']}">
+		<f:ajax event="blur" render="motDePasseMessage" />
+	</h:inputSecret>
+	<h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
+	<br />
+
+	<h:outputLabel for="confirmation">Confirmation du mot de passe <span
+			class="requis">*</span>
+	</h:outputLabel>
+	<h:inputSecret id="confirmation"
+		value="#{inscrireBean.utilisateur.motDePasse}" required="true"
+		size="20" maxlength="20"
+		requiredMessage="#{msg['inscription.confirmation']}">
+		<f:ajax event="blur" render="confirmationMessage" />
+	</h:inputSecret>
+	<h:message id="confirmationMessage" for="confirmation"
+		errorClass="erreur" />
+	<br />-->
+		<h:outputLabel for="mail">Adresse email <span class="required">*</span></h:outputLabel>
+		<h:inputText id="mail" value="#{customerBean.customer.mail}" required="true" requiredMessage="#{msg['createCustomer.email.required']}" validatorMessage="#{msg['createCustomer.email.validator']}" size="50" maxlength="50">
+			<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			<f:ajax event="blur" render="mailMessage" />
+		</h:inputText>
+		<h:message id="mailMessage" for="mail" errorClass="error" />
+		<br />
+		
+		<h:outputLabel for="notes">Notes</h:outputLabel>
+		<h:inputTextarea id="notes" value="#{customerBean.customer.notes}" cols="60" rows="4" maxlength="255" />
+		<h:message id="notesMessage" for="notes" errorClass="error" />
+		<br />
+</ui:composition>

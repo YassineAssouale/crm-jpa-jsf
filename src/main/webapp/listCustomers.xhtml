@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Liste des clients</title>
+	<h:outputStylesheet name="style.css" />
+</h:head>
+<h:body>
+	<ui:include src="inc/menu.xhtml" />
+	<h:dataTable value = "#{customerBean.getCustomers()}" var = "customer"
+	   styleClass = "customerTable"
+	   headerClass = "customerTableHeader"
+	   rowClasses = "customerTableOddRow,customerTableEvenRow">
+	   
+	   <h:column>    				
+	      <f:facet name = "header">Nom</f:facet>    				
+	      #{customer.lastname}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Prénom</f:facet>
+	      #{customer.firstname}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Entreprise</f:facet>
+	      #{customer.company}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Téléphone</f:facet>
+	      #{customer.phone}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Mobile</f:facet>
+	      #{customer.mobile}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Adresse mail</f:facet>
+	      #{customer.mail}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Notes</f:facet>
+	      #{customer.notes}
+	   </h:column>
+	   
+	   <h:column>
+	      <f:facet name = "header">Action</f:facet>
+	      <h:form>
+	      <h:commandLink action="#{customerBean.delete(customer)}" >
+	       	<center><h:graphicImage value="resources/delete.png" /></center>
+	      </h:commandLink>
+	      </h:form>
+	   </h:column>
+	</h:dataTable>
+</h:body>
+</html>

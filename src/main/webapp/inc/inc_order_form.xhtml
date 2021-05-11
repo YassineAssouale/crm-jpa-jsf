@@ -1,0 +1,62 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:outputLabel for="label">Libellé <span class="required">*</span></h:outputLabel>
+<h:inputText id="label" value="#{orderBean.order.label}" required="true" requiredMessage="#{msg['createOrder.label.required']}" size="50" maxlength="100" validatorMessage="#{msg['createOrder.label.validator']}">
+	<f:validateLength minimum="2" maximum="50" />
+	<f:ajax event="blur" render="labelMessage" />
+</h:inputText>
+<h:message id="labelMessage" for="label" errorClass="error" />
+<br />
+
+<h:outputLabel for="adrEt">TJM HT<span class="required">*</span></h:outputLabel>
+<h:inputText id="adrEt" value="#{orderBean.order.adrEt}" required="true" requiredMessage="#{msg['createOrder.adrEt.required']}" size="50" maxlength="100" converterMessage="#{msg['createOrder.adrEt.validator']}">
+	<f:convertNumber pattern="0"/>
+	<f:ajax event="blur" render="adrEtMessage" />	
+</h:inputText>
+<h:message id="adrEtMessage" for="adrEt" errorClass="error" />
+<br />
+
+<h:outputLabel for="tva">T.V.A<span class="required">*</span></h:outputLabel>
+<h:inputText id="tva" value="#{orderBean.order.tva}" required="true" requiredMessage="#{msg['createOrder.tva.required']}" size="50" maxlength="100" converterMessage="#{msg['createOrder.tva.validator']}" validatorMessage="#{msg['createOrder.tva.range']}">
+	<f:convertNumber pattern="0"/>
+	<f:validateDoubleRange minimum="0" maximum="100"/>
+	<f:ajax event="blur" render="tvaMessage" />		
+</h:inputText>
+<h:message id="tvaMessage" for="tva" errorClass="error" />
+<br />
+
+<h:outputLabel for="numberOfDays">Nombre de jours <span class="required">*</span></h:outputLabel>
+<h:inputText id="numberOfDays" value="#{orderBean.order.numberOfDays}" required="true" requiredMessage="#{msg['createOrder.numberOfDays.required']}" size="50" maxlength="100" converterMessage="#{msg['createOrder.numberOfDays.validator']}" validatorMessage="#{msg['createOrder.numberOfDays.range']}">
+	<f:convertNumber pattern="0"/>
+	<f:validateDoubleRange minimum="1" maximum="2000"/>
+	<f:ajax event="blur" render="numberOfDaysMessage" />		
+</h:inputText>
+<h:message id="numberOfDaysMessage" for="numberOfDays" errorClass="error" />
+<br />
+
+<h:outputLabel for="status">Statut <span class="required">*</span></h:outputLabel>
+<h:inputText id="status" value="#{orderBean.order.status}" required="true" requiredMessage="#{msg['createOrder.status.required']}" size="50" validatorMessage="#{msg['createOrder.status.validator']}" maxlength="100">
+	<f:validateLength minimum="3" maximum="50" />
+	<f:ajax event="blur" render="statusMessage" />		
+</h:inputText>
+<h:message id="statusMessage" for="status" errorClass="error" />
+<br />
+
+<h:outputLabel for="type">Type de commande <span class="required">*</span></h:outputLabel>
+<h:inputText id="type" value="#{orderBean.order.type}" required="true" requiredMessage="#{msg['createOrder.type.required']}" size="50" validatorMessage="#{msg['createOrder.type.validator']}" maxlength="100">
+	<f:validateLength minimum="3" maximum="50" />
+	<f:ajax event="blur" render="typeMessage" />		
+</h:inputText>
+<h:message id="typeMessage" for="type" errorClass="error" />
+<br />
+
+<h:outputLabel for="orderNotes">Notes</h:outputLabel>
+<h:inputTextarea id="orderNotes" value="#{orderBean.order.notes}" cols="60" rows="4" maxlength="255" />
+<h:message id="orderNotesMessage" for="orderNotes" errorClass="error" />
+<br />
+
+</ui:composition> 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Création d'un client</title>
+	<h:outputStylesheet name="style.css" />
+	<!-- Bundle : a simple file with properties extension, messages.properties
+	to create our validation messages identify by the name of the facelet who use it
+	followed by a dot and the name of the attribute concerned, see messages.properties
+	var = message defind which name the bundle will be disgned in the page -->
+	<f:loadBundle basename="fr.m2i.crm.bean.messages" var="message"></f:loadBundle>
+</h:head>
+<h:body>
+	<ui:include src="inc/menu.xhtml" />
+	<h:form>
+		<legend>Informations client</legend>
+		<ui:include src="inc/inc_customer_form.xhtml" />
+		<!-- action = EL to call createCustomer method of customerBean 
+		&& reload the current view to display values -->
+		<h:commandButton styleClass="submitButton" value="Valider" action="#{customerBean.createCustomer}" >
+		<!-- execute : @form defines the scopte of the action to be performed : submit form
+			render : @form to be sure that all form will be updated 
+			<f:ajax execute="@form" render="@form" />
+		-->
+		</h:commandButton>
+		<br/>
+	</h:form>
+</h:body>
+</html>
